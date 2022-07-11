@@ -82,9 +82,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build]
+          keys: [frontend-test]
       - run:
-          name: Build front-end
+          name: test frontend
           command: |
             cd frontend
             npm install
