@@ -192,16 +192,16 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints: ["7c:8e:22:c7:c0:f6:71:6c:ff:da:90:8a:32:e8:b4:f3"]
-      # attach workspace
-      - attach_workspace:
-          at: ~/
       - run:
           name: Install dependencies
           command: |
             # Your code here
             apk add --update tar
             apk add --update gzip
-            apk add --update ansible                                 
+            apk add --update ansible   
+      # attach workspace
+      - attach_workspace:
+          at: ~/                              
       - run:
           name: Configure server
           command: |
