@@ -158,9 +158,7 @@ jobs:
               --tags project=udapeople
       - run:
           name: Ensure front-end infrastructure exist
-          command: |
-            pwd
-            ls -la
+          command: |            
             aws cloudformation deploy \
               --template-file .circleci/files/frontend.yml \
               --stack-name "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}" \
@@ -172,9 +170,7 @@ jobs:
             yum install -y tar gzip
       - run:
           name: Add back-end ip to ansible inventory
-          command: |
-            pwd
-            ls -la
+          command: |            
             echo "[all]" > .circleci/ansible/inventory.txt
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
