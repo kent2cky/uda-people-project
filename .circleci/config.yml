@@ -199,7 +199,8 @@ jobs:
           name: Install dependencies
           command: |
             # Your code here
-            yum install -y tar gzip
+            apk install -y tar gzip
+            apk install -y awscli
             apk add --update ansible                                 
       - run:
           name: Configure server
