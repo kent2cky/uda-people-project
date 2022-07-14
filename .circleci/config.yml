@@ -201,7 +201,7 @@ jobs:
             # Your code here
             apk add --update tar
             apk add --update gzip
-            apk add --update awscli
+            apk add --no-cache aws-cli
             apk add --update ansible                                 
       - run:
           name: Configure server
