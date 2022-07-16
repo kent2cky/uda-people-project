@@ -226,10 +226,11 @@ jobs:
       - restore_cache:
           keys: [backend-build]
       - run:
-          name: Install dependencies (awscli)
+          name: install awscli
           command: |
-            apk --no-cache add py-pip
-            pip install awscli
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip%22 -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
       - run:
           name: Run migrations
           command: |
