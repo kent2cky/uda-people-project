@@ -226,6 +226,11 @@ jobs:
       - restore_cache:
           keys: [backend-build]
       - run:
+          name: Install dependencies (awscli)
+          command: |
+            apk --no-cache add py-pip
+            pip install awscli
+      - run:
           name: Run migrations
           command: |
             # Your code here
@@ -233,7 +238,6 @@ jobs:
             ls -la
             cd backend
             npm install
-            npm audit fix --force
             npm run migrations > migrations_dump.txt
             cat migrations_dumps.txt
       - run:
@@ -244,8 +248,8 @@ jobs:
                 curl https://kvdb.io/98ZcMGzsGzQH62KXDug9Sv/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
      # Here's where you will add some code to rollback on failure      
-      - destroy-environment:
-          id: ${CIRCLE_WORKFLOW_ID:0:7}    
+      # - destroy-environment:
+      #     id: ${CIRCLE_WORKFLOW_ID:0:7}    
 
 #   deploy-frontend:
 #     docker:
@@ -346,19 +350,19 @@ jobs:
 workflows:
   default:
     jobs:
-      # - build-frontend
-      # - build-backend
-      # - test-frontend:
-      #     requires: [build-frontend]
-      # - test-backend:
-      #     requires: [build-backend]
-      # - scan-backend:
-      #     requires: [build-backend]
-      # - scan-frontend:
-      #     requires: [build-frontend]
-      - deploy-infrastructure
-      # - deploy-infrastructure:
-      #     requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+      - build-frontend
+      - build-backend
+      - test-frontend:
+          requires: [build-frontend]
+      - test-backend:
+          requires: [build-backend]
+      - scan-backend:
+          requires: [build-backend]
+      - scan-frontend:
+          requires: [build-frontend]
+      # - deploy-infrastructure
+      - deploy-infrastructure:
+          requires: [test-frontend, test-backend, scan-frontend, scan-backend]
           # filters:
           #   branches:
           #     only: [test-feature-branch]
