@@ -1,0 +1,11 @@
+---
+- name: "Extract artifact.tar.gz into EC2 server"
+  ansible.builtin.unarchive:
+    src: ~/project/artifact.tar.gz
+    dest: ~/
+
+- name: "npm install all."
+  command: npm install
+
+- name: "start server with pm2"
+  command: pm2 start npm -- start
