@@ -8,7 +8,7 @@
   command: npm install
 
 - name: "start server with pm2"
-  command: pm2 stop default
-
-- name: "start server with pm2"
-  command: pm2 start npm -- start
+  become: yes
+  shell: |
+    pm2 delete all
+    pm2 start npm -- start
