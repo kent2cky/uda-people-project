@@ -331,16 +331,25 @@ jobs:
           command: |
             # your code here
             cd backend
+            # export env var 
+            echo ENVIRONMENT: production > .env
+            echo TYPEORM_CONNECTION: "{{ lookup('env', 'TYPEORM_CONNECTION')}}" >> .env
+            echo TYPEORM_ENTITIES: "{{ lookup('env', 'TYPEORM_ENTITIES')}}" >> .env
+            echo TYPEORM_HOST: "{{ lookup('env', 'TYPEORM_HOST')}}" >> .env
+            echo TYPEORM_PORT: 5432 >> .env
+            echo TYPEORM_USERNAME: "{{ lookup('env', 'TYPEORM_USERNAME')}}" >> .env
+            echo TYPEORM_PASSWORD: "{{ lookup('env', 'TYPEORM_PASSWORD')}}" >> .env
+            echo TYPEORM_DATABASE: "{{ lookup('env', 'TYPEORM_DATABASE')}}" >> .env
+            echo TYPEORM_MIGRATIONS: "{{ lookup('env', 'TYPEORM_MIGRATIONS')}}" >> .env
+            echo TYPEORM_MIGRATIONS_DIR: "{{ lookup('env', 'TYPEORM_MIGRATIONS_DIR')}}" >> .env
+            cat .env
             npm i
             npm run build
             cd ..
             # Zip the directory
-            ls -la
             rm -rf node_modules
-            ls -la
-            pwd
             tar -C backend -czvf artifact.tar.gz .
-            cd .circleci/ansible
+            cd .circleci/ansible            
             echo "Contents  of the inventory.txt file is -------"
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
