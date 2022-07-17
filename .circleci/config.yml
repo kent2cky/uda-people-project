@@ -332,7 +332,6 @@ jobs:
             npm i
             npm run build
             rm -rf node_modules
-            cd ..
             # Zip the directory
             tar -C backend -czvf artifact.tar.gz .
             cd .circleci/ansible            
