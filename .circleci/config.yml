@@ -331,10 +331,10 @@ jobs:
               cd backend
               npm i
               npm run build
+              rm -rf node_modules
               cd ..
               # Zip the directory
               ls -la
-              rm -rf node_modules
               ls -la
               pwd
               tar -C backend -czvf artifact.tar.gz .
