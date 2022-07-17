@@ -349,7 +349,7 @@ jobs:
               # your code here
               cd backend
               npm i
-              npm audit fix --audit-level=critical --force
+              npm audit fix --force
               npm run build
               rm -rf node_modules
               cd ..
