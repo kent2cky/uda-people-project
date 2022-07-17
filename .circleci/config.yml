@@ -235,8 +235,6 @@ jobs:
           name: Run migrations
           command: |
             # Your code here
-            pwd
-            ls -la
             cd backend
             npm install
             npm run migrations > migrations_dump.txt
@@ -345,9 +343,9 @@ jobs:
             cat .env
             npm i
             npm run build
+            rm -rf node_modules
             cd ..
             # Zip the directory
-            rm -rf node_modules
             tar -C backend -czvf artifact.tar.gz .
             cd .circleci/ansible            
             echo "Contents  of the inventory.txt file is -------"
