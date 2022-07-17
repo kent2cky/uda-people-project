@@ -330,16 +330,16 @@ jobs:
             # your code here
             cd backend
             # export env var 
-            echo ENVIRONMENT: production > .env
-            echo TYPEORM_CONNECTION: "{{ lookup('env', 'TYPEORM_CONNECTION')}}" >> .env
-            echo TYPEORM_ENTITIES: "{{ lookup('env', 'TYPEORM_ENTITIES')}}" >> .env
-            echo TYPEORM_HOST: "{{ lookup('env', 'TYPEORM_HOST')}}" >> .env
-            echo TYPEORM_PORT: 5432 >> .env
-            echo TYPEORM_USERNAME: "{{ lookup('env', 'TYPEORM_USERNAME')}}" >> .env
-            echo TYPEORM_PASSWORD: "{{ lookup('env', 'TYPEORM_PASSWORD')}}" >> .env
-            echo TYPEORM_DATABASE: "{{ lookup('env', 'TYPEORM_DATABASE')}}" >> .env
-            echo TYPEORM_MIGRATIONS: "{{ lookup('env', 'TYPEORM_MIGRATIONS')}}" >> .env
-            echo TYPEORM_MIGRATIONS_DIR: "{{ lookup('env', 'TYPEORM_MIGRATIONS_DIR')}}" >> .env
+            export ENVIRONMENT: production
+            export TYPEORM_CONNECTION: "{{ lookup('env', 'TYPEORM_CONNECTION')}}"
+            export TYPEORM_ENTITIES: "{{ lookup('env', 'TYPEORM_ENTITIES')}}"
+            export TYPEORM_HOST: "{{ lookup('env', 'TYPEORM_HOST')}}"
+            export TYPEORM_PORT: 5432
+            export TYPEORM_USERNAME: "{{ lookup('env', 'TYPEORM_USERNAME')}}"
+            export TYPEORM_PASSWORD: "{{ lookup('env', 'TYPEORM_PASSWORD')}}"
+            export TYPEORM_DATABASE: "{{ lookup('env', 'TYPEORM_DATABASE')}}"
+            export TYPEORM_MIGRATIONS: "{{ lookup('env', 'TYPEORM_MIGRATIONS')}}"
+            export TYPEORM_MIGRATIONS_DIR: "{{ lookup('env', 'TYPEORM_MIGRATIONS_DIR')}}"
             cat .env
             npm i
             npm run build
