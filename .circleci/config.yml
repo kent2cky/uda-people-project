@@ -340,7 +340,7 @@ jobs:
             export TYPEORM_DATABASE="{{ lookup('env', 'TYPEORM_DATABASE')}}"
             export TYPEORM_MIGRATIONS="{{ lookup('env', 'TYPEORM_MIGRATIONS')}}"
             export TYPEORM_MIGRATIONS_DIR="{{ lookup('env', 'TYPEORM_MIGRATIONS_DIR')}}"
-            cat .env
+            env
             npm i
             npm run build
             rm -rf node_modules
