@@ -330,7 +330,7 @@ jobs:
             # your code here
             cd backend
             # export env var 
-            export ENVIRONMENT: production
+            export NODE_ENV: production
             export TYPEORM_CONNECTION: "{{ lookup('env', 'TYPEORM_CONNECTION')}}"
             export TYPEORM_ENTITIES: "{{ lookup('env', 'TYPEORM_ENTITIES')}}"
             export TYPEORM_HOST: "{{ lookup('env', 'TYPEORM_HOST')}}"
