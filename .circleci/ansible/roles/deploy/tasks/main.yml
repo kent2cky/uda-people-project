@@ -1,14 +1,32 @@
 ---
-- name: "Extract artifact.tar.gz into EC2 server"
-  ansible.builtin.unarchive:
-    src: ~/project/artifact.tar.gz
-    dest: ~/
+- name: Create app directory
+  file:
+    path: $HOME/web
+    state: directory
 
-- name: "npm install all."
-  command: npm install
+- name: "Copy files to server"
+  ansible.builtin.copy:
+    src: "files/artifact.tar.gz"
+    dest: "$HOME/artifact.tar.gz"
+    follow: yes
 
-- name: "start server with pm2"
-  become: yes
+- name: "install dependencies."
+  become: true
+  apt:
+    name:
+      - nodejs
+      - npm
+    state: latest
+    update_cache: yes
+
+- name: "Install Dependencies"
+  become: true
   shell: |
-    pm2 delete all
-    pm2 start npm -- start
+    tar -xvf artifact.tar.gz .
+    rm artifact.tar.gz
+    npm install
+- name: "Start Server"
+  become: true
+  shell: |
+    sudo pm2 stop default
+    sudo pm2 start npm -- run start
