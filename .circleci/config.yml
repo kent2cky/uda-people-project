@@ -370,6 +370,10 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
+          name: Install dependencies
+          command: |
+            yum -y install tar gzip
+      - run:
           name: Cleanup stacks
           command: |
             ls -la
