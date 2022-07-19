@@ -376,7 +376,6 @@ jobs:
       - run:
           name: Cleanup stacks
           command: |
-            ls -la
             cat OldWorkflowID.txt
             export OldWorkflowID=$(cat OldWorkflowID.txt)
             echo OldWorkflowID=$OldWorkflowID
