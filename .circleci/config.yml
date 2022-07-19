@@ -335,6 +335,7 @@ jobs:
           command: |
             yum install sudo -y
             yum install -y gcc-c++ make
+            yum -y install tar gzip
             curl -sL https://rpm.nodesource.com/setup_13.x |sudo -E bash -
             sudo yum install -y nodejs
       - run:
