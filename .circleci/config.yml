@@ -364,8 +364,7 @@ jobs:
       # Docker image here
     steps:
       # Checkout code from git
-      - checkout
-      
+      - checkout      
       # attach workspace
       - attach_workspace:
           at: ~/
@@ -401,7 +400,8 @@ workflows:
       #     requires: [build-backend]
       # - scan-frontend:
       #     requires: [build-frontend]
-      - deploy-infrastructure:
+      - deploy-infrastructure
+      # - deploy-infrastructure:
           # requires: [test-frontend, test-backend, scan-frontend, scan-backend]
           # filters:
           #   branches:
@@ -431,7 +431,8 @@ workflows:
       #     # filters:
       #     #   branches:
       #     #     only: [master]
-      - cloudfront-update:
+      - cloudfront-update
+      # - cloudfront-update:
           # requires: [smoke-test]
           # filters:
           #   branches:
