@@ -434,7 +434,8 @@ workflows:
       #     # filters:
       #     #   branches:
       #     #     only: [master]
-      - cloudfront-update:
+      - cloudfront-update
+      # - cloudfront-update:
           # requires: [smoke-test]
           # filters:
           #   branches:
