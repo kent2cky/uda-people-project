@@ -410,10 +410,8 @@ jobs:
             cd .circleci/ansible
             cat inventory.txt
             ansible-playbook -i inventory.txt node-exporter.yml
-      - destroy-environment:
-          workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
-      - revert-migrations:
-          workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
+      - destroy-environment
+      - revert-migrations
 
 workflows:
   default:
@@ -434,7 +432,7 @@ workflows:
       #     #   branches:
       #     #     only: [master]
       - add-prometheus-node-exporter:
-          requires: [deploy-infrastructure]          
+          requires: [deploy-infrastructure]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
       #     # filters:
