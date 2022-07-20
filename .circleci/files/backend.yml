@@ -25,6 +25,12 @@ Resources:
           FromPort: 9100
           ToPort: 9100
           CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: -1
+          IpProtocol: -1
+          ToPort: -1
+          Description: Allows outward communication on all ports
 
   EC2Instance:
     Type: AWS::EC2::Instance

@@ -1,2 +1,2 @@
 [URL01]: https://github.com/kent2cky/uda-people-project
-[URL05]: http://ec2-34-204-12-39.compute-1.amazonaws.com:9090
+[URL05]: http://ec2-3-95-189-242.compute-1.amazonaws.com:9090
