@@ -433,6 +433,8 @@ workflows:
       #     # filters:
       #     #   branches:
       #     #     only: [master]
+      - add-prometheus-node-exporter:
+          requires: [deploy-infrastructure]          
       - configure-infrastructure:
           requires: [deploy-infrastructure]
       #     # filters:
