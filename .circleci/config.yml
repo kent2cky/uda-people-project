@@ -222,8 +222,8 @@ jobs:
             yum install -y gcc-c++ make
             curl -sL https://rpm.nodesource.com/setup_13.x |sudo -E bash -
             sudo yum install -y nodejs
-      - attach_workspace:
-          at: ~/tmp
+      - restore_cache:
+          keys: [frontend-build]
       - run:
           name: Get backend url
           command: |
@@ -436,9 +436,7 @@ workflows:
           requires: [deploy-infrastructure]
           filters:
             branches:
-              only: [master]
-      - add-prometheus-node-exporter:
-          requires: [deploy-infrastructure]
+              only: [master]      
       - configure-infrastructure:
           requires: [deploy-infrastructure]
           filters:
