@@ -1,2 +1,5 @@
 [URL01]: https://github.com/kent2cky/uda-people-project
-[URL05]: http://ec2-3-95-189-242.compute-1.amazonaws.com:9090
+[URL02]: http://udapeople-2bf3bb5.s3.amazonaws.com/index.html
+[URL03]: http://dw8edfiajp4dc.cloudfront.net
+[URL04]: http://54.172.213.250:3030/api/status
+[URL05]: http://ec2-44-199-253-21.compute-1.amazonaws.com:9090
