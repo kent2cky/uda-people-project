@@ -12,9 +12,9 @@
     - ansible_stdout_callback: yaml
 
   pre_tasks:
-    - name: "wait 600 seconds for taret connection to become reachable/usable"
+    - name: "wait 10 seconds for taret connection to become reachable/usable"
       wait_for_connection:
-        timeout: 60
+        timeout: 10
         delay: 1
 
     - name: "install python for ansible"
